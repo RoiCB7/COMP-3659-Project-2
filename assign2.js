@@ -1,11 +1,11 @@
 /*
-Name
-Email
-Course
-Assingment
+Name: Chris Botuli
+Email: cbotu861@mtoryal.ca
+Course: COMP 3612
+Assingment: 2
 
 Limitations: Hover will not work, but clicking the credit button functionally does the same thing. Will only display the first act and first scene of the play.
-             Will not switch between Acts, nor will it display players. Will not display scenes. Can't sort.
+             Will not switch between Acts, nor will it display players. Will not display scenes. Can't sort. Plays can sort of 'stack' on each other if view text is preseed multiple times.
 */
 	
 const api = 'https://www.randyconnolly.com/funwebdev/3rd/api/shakespeare/play.php';
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 
-
+/*Used to show the name and course once the button is clicked*/
 function HideShowCredit() {
   let header = document.querySelector('header h1');
   let myName = document.createElement("p");
@@ -80,6 +80,7 @@ function HideShowCredit() {
   });
 }
 
+/*Will display information about the play*/
 function DisplayPlayInfo(){
 
   document.querySelectorAll("#playList ul li").forEach(playInfo => {
@@ -100,7 +101,7 @@ function DisplayPlayInfo(){
 
    })
 }
-
+ /*Will display information about the play, like the title and synopsis, gives an option to view excerpts of the play*/
 function displayInitialInterface(id, data){
   for (let p of data){
 
@@ -165,6 +166,7 @@ function displayInitialInterface(id, data){
 }
 }
 
+/* NOT WORKING: Meant to populate the 'scenes' drop down menu*/
 function populateScenesMenu(play) {
   let selectScene = document.querySelector('#sceneList');
 
@@ -181,7 +183,7 @@ function populateScenesMenu(play) {
     selectScene.appendChild(option);
   }
 }
-
+/* Will populate the acts drop down menu*/
 function populateActsMenu(play) {
   let selectAct = document.querySelector('#actList');
 
@@ -197,6 +199,7 @@ function populateActsMenu(play) {
   }
 }
 
+/* Used to toggle on and off, the various interfaces */
 function toggleAfterViewText() {
   let toggle = document.getElementById('initialInterface');
   toggle.style.display = "none";
@@ -214,6 +217,7 @@ function toggleAfterViewText() {
   toggle5.style.display = "block";
 }
 
+/* Displays intitial play information */
 function writePlayInfo(play) {
   let playTitle = document.querySelector('#playHere h2');
   let textTitle = document.createTextNode(`${play.title}`);
@@ -237,6 +241,7 @@ function writePlayInfo(play) {
   return { playTitle, actName, sceneName, title, direction };
 }
 
+/*Writes out the play text*/ 
 function writePlayText(play, act) {
   let div = document.createElement('div');
 let i=0;
@@ -316,7 +321,7 @@ function displayDetails(id, data){
   }
 }
 
-
+/* Populates the playlist*/
 function populatePlayList(play) {
   let titles = document.createElement("li");
   titles.textContent = play.title;
@@ -325,10 +330,5 @@ function populatePlayList(play) {
   select.append(titles);
 }
 
-
-
-
-
-/*after event, create playlsit again*/
 
 
